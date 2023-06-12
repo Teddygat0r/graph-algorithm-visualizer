@@ -102,6 +102,12 @@ const toggleBkg = () => {
 const run = () => {
     const x = document.getElementById("xbegin").value - 1;
     const y = document.getElementById("ybegin").value - 1;
+
+    if(!isLegal(x, y)){
+        alert("X & Y are not within the grid.")
+        return;
+    }
+
     const checked = [];
     for (let i = 0; i < grid.length; i++) {
         checked.push([]);

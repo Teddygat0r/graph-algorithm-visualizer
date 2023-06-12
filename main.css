@@ -59,7 +59,7 @@ body {
 }
 
 /* The slider */
-.slider {
+.slide {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -71,7 +71,7 @@ body {
     transition: 0.4s;
 }
 
-.slider:before {
+.slide:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -83,25 +83,52 @@ body {
     transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked + .slide {
     background-color: #2196f3;
 }
 
-input:focus + .slider {
+input:focus + .slide {
     box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked + .slider:before {
+input:checked + .slide:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
 
 /* Rounded sliders */
-.slider.round {
+.slide.round {
     border-radius: 34px;
 }
 
-.slider.round:before {
+.slide.round:before {
     border-radius: 50%;
+}
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+    transition: opacity 0.2s;
+    border-radius: 25px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
 }

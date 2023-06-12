@@ -12,15 +12,38 @@
             <div class="selection" id="selection">
                 <h1>Graph Visualizer</h1>
                 <div class="stats">
-                    Sus Bkg
-                    <label class="switch">
-                        <input
-                            type="checkbox"
-                            name="bkg"
-                            id="bkg" 
-                            onclick="toggleBkg()"/>
-                        <span class="slider round"></span>
-                    </label>
+                    <div class="slidecontainer">
+                        <p>Length:</p>
+                        <input type="range" min="1" max="15" value="8" class="slider" id="width" oninput="generateGrid()">
+                    </div>
+                    <div class="slidecontainer">
+                        <p>Height:</p>
+                        <input type="range" min="1" max="15" value="8" class="slider" id="height" oninput="generateGrid()">
+                    </div>
+                    <div class="slidecontainer">
+                        <p>X: </p>
+                        <input type="number" id="xbegin"/>
+                    </div>
+                    <div class="slidecontainer">
+                        <p>Y: </p>
+                        <input type="number" id="ybegin"/>
+                    </div>
+                    <div class="slidecontainer">
+                        <button onclick="run()">Run</button>
+                    </div>
+
+
+                    <div class="slidecontainer">
+                        Sus Bkg:
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                name="bkg"
+                                id="bkg"
+                                onclick="toggleBkg()"/>
+                            <span class="slide round"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="object" id="grid">balls</div>

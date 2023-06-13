@@ -29,10 +29,22 @@
                         <input type="number" id="ybegin"/>
                     </div>
                     <div class="slidecontainer">
-                        <button onclick="run()">Run</button>
+                        <p id="algoHolder">DFS</p>
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                name="bkg"
+                                id="algo"
+                                onclick="toggleAlgo()"/>
+                            <span class="slide round"></span>
+                        </label>
+                    </div>
+                    <br/>
+                    <div class="slidecontainer">
+                        <button onclick="run()" class="button">Run</button>
                     </div>
 
-
+                    <br/>
                     <div class="slidecontainer">
                         Sus Bkg:
                         <label class="switch">

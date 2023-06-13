@@ -25,26 +25,29 @@ const isLegal = (x, y, checked) => {
 };
 
 const wait = (ms) => {
-    let start = Date.now(), now = start;
+    let start = Date.now(),
+        now = start;
     while (now - start < ms) {
         now = Date.now();
         console.log(now - start);
     }
-}
+};
 
 const sleep = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+    return new Promise((resolve) => setTimeout(resolve, ms));
+};
 
 const getRandomRGB = () => {
     return Math.floor(Math.random() * 256);
-}
+};
 
 const dfs = async (x, y, checked) => {
     if (checked[x][y]) return;
-
+    await sleep(200);
     checked[x][y] = true;
-    grid[x][y].style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`;
+    grid[x][
+        y
+    ].style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`;
 
     const dirs = [
         [x, y + 1],
@@ -54,8 +57,7 @@ const dfs = async (x, y, checked) => {
     ];
 
     for (let i = 0; i < dirs.length; i++) {
-        if (isLegal(dirs[i][0], dirs[i][1], checked)){
-            await sleep(200);
+        if (isLegal(dirs[i][0], dirs[i][1], checked)) {
             await dfs(dirs[i][0], dirs[i][1], checked);
         }
     }
@@ -64,11 +66,13 @@ const dfs = async (x, y, checked) => {
 
 const bfs = async (x, y, checked) => {
     const queue = [];
-    
+
     queue.push([x, y]);
-    while(queue.length > 0){
+    while (queue.length > 0) {
         obj = queue.shift();
-        grid[obj[0]][obj[1]].style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`;
+        grid[obj[0]][
+            obj[1]
+        ].style.backgroundColor = `rgb(${getRandomRGB()}, ${getRandomRGB()}, ${getRandomRGB()})`;
         checked[obj[0]][obj[1]] = true;
         console.log(obj[0] + " " + obj[1]);
 
@@ -78,9 +82,12 @@ const bfs = async (x, y, checked) => {
             [obj[0] - 1, obj[1]],
             [obj[0], obj[1] - 1],
         ];
-        
+
         for (let i = 0; i < dirs.length; i++) {
-            if (isLegal(dirs[i][0], dirs[i][1], checked) && !checked[dirs[i][0]][dirs[i][1]]){
+            if (
+                isLegal(dirs[i][0], dirs[i][1], checked) &&
+                !checked[dirs[i][0]][dirs[i][1]]
+            ) {
                 checked[dirs[i][0]][dirs[i][1]] = true;
                 queue.push([dirs[i][0], dirs[i][1]]);
             }
@@ -90,13 +97,19 @@ const bfs = async (x, y, checked) => {
     checked[x][y] = false;
 };
 
-
-
 const toggleBkg = () => {
     document.getElementById("selection").style.backgroundImage =
         document.querySelector("#bkg").checked
             ? 'url("/images/Fx8rHZXaUAclbkK.jpg")'
             : "";
+};
+
+const toggleAlgo = () => {
+    document.getElementById("algoHolder").innerText = document.querySelector(
+        "#algo"
+    ).checked
+        ? "BFS"
+        : "DFS";
 };
 
 const run = () => {
@@ -109,7 +122,12 @@ const run = () => {
             checked[i].push(false);
         }
     }
-    bfs(x, y, checked);
+
+    if(document.querySelector(
+        "#algo"
+    ).checked) bfs(x, y, checked);
+    else dfs(x, y, checked);
+    
 };
 
 generateGrid();

@@ -100,7 +100,7 @@ const bfs = async (x, y, checked) => {
 const toggleBkg = () => {
     document.getElementById("selection").style.backgroundImage =
         document.querySelector("#bkg").checked
-            ? 'url("/images/Fx8rHZXaUAclbkK.jpg")'
+            ? 'url("images/Fx8rHZXaUAclbkK.jpg")'
             : "";
 };
 

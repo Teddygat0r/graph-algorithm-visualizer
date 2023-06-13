@@ -116,17 +116,17 @@ const run = () => {
     const x = document.getElementById("xbegin").value - 1;
     const y = document.getElementById("ybegin").value - 1;
 
-    if(!isLegal(x, y)){
-        alert("X & Y are not within the grid.")
-        return;
-    }
-
     const checked = [];
     for (let i = 0; i < grid.length; i++) {
         checked.push([]);
         for (let j = 0; j < grid[0].length; j++) {
             checked[i].push(false);
         }
+    }
+
+    if(!isLegal(x, y, checked)){
+        alert("X & Y are not within the grid.")
+        return;
     }
 
     if(document.querySelector(
